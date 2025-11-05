@@ -1,0 +1,42 @@
+body {
+  font-family: Arial;
+  padding: 20px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.done {
+  text-decoration: line-through;
+  color: gray;
+}
+
+button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+table {
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th {
+  background: #eee;
+  text-align: left;
+}
+
+button {
+  padding: 5px 10px;
+  background: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
