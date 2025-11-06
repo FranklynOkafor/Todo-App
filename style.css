@@ -1,42 +1,266 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   padding: 20px;
+  background: #f5f5f5;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.task {
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+form input[type="text"] {
+  flex: 1;
+  padding: 12px 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus {
+  outline: none;
+  border-color: #2d89ff;
+}
+
+form button[type="submit"] {
+  padding: 12px 30px;
+  background: #2d89ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+form button[type="submit"]:hover {
+  background: #1a6fd8;
+}
+
+/* Task List Container */
+#task_list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Remove table styling completely */
+table {
+  width: 100%;
+  border: none;
+  border-collapse: collapse;
+  margin: 0;
+  display: block;
+}
+
+table thead {
+  display: none; /* Hide table headers */
+}
+
+table tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Transform table rows into cards */
+table tr {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin: 8px 0;
+  background: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  gap: 15px;
 }
 
-.done {
-  text-decoration: line-through;
-  color: gray;
+table tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
-button {
-  padding: 5px 10px;
-  cursor: pointer;
-}
-table {
-  border-collapse: collapse;
-  margin-top: 20px;
+/* Remove table cell default styling */
+table td {
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
 }
 
-th {
-  background: #eee;
+/* Checkbox column */
+table td:nth-child(1) {
+  flex: 0 0 auto;
+}
+
+/* Task name column */
+table td:nth-child(2) {
+  flex: 1;
   text-align: left;
 }
 
-button {
-  padding: 5px 10px;
-  background: red;
+table td:nth-child(2) p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Delete button column */
+table td:nth-child(3) {
+  flex: 0 0 auto;
+}
+
+/* Checkbox Styling */
+.task_check {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: #2d89ff;
+}
+
+/* Completed task styling */
+input.task_check:checked + p,
+tr:has(input.task_check:checked) td:nth-child(2) p {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* Delete Button */
+.delete-btn {
+  padding: 8px 16px;
+  background: #ff4757;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s;
+}
+
+.delete-btn:hover {
+  background: #e63946;
+  opacity: 1;
+}
+
+/* Logout Link */
+a[href="logout.php"] {
+  display: inline-block;
+  margin-top: 30px;
+  color: #666;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+a[href="logout.php"]:hover {
+  border-color: #2d89ff;
+  color: #2d89ff;
+}
+
+/* Register/Login Page Styles */
+.register-body,
+.login-body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  padding: 20px;
+}
+
+.form-box {
+  background: white;
+  padding: 40px 35px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.form-box h2 {
+  text-align: center;
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.form-box input {
+  padding: 14px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+.form-box input:focus {
+  outline: none;
+  border-color: #2d89ff;
+}
+
+.form-box input[type="submit"] {
+  background: #2d89ff;
   color: white;
   border: none;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: 5px;
+  transition: background 0.3s;
 }
 
-button:hover {
-  opacity: 0.8;
+.form-box input[type="submit"]:hover {
+  background: #1a6fd8;
+}
+
+.form-box p {
+  text-align: center;
+  margin: 5px 0 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.form-box a {
+  text-decoration: none;
+  color: #2d89ff;
+  font-weight: 600;
+}
+
+.form-box a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  form button[type="submit"] {
+    width: 100%;
+  }
+
+  table tr {
+    padding: 12px 15px;
+  }
 }

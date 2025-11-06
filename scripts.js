@@ -8,7 +8,7 @@ document.querySelectorAll(".task_check").forEach((check) => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `id=${task_id}&completed=${status}`,
     });
-    alert("Nogoing back");
+    
   });
 });
 

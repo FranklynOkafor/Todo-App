@@ -1,10 +1,18 @@
 <?php
+session_start();
 include 'db.php';
 
-$sql = "SELECT * FROM tasks ORDER BY created_at DESC";
+
+
+
+if (!$_SESSION['user_id']) {
+  header('Location: login.php');
+  exit;
+}
+
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM tasks WHERE user_id = $user_id ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -31,11 +39,11 @@ $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0) { ?>
     <div id="task_list">
       <table border="1" width='60%' cellpadding="10" cellspacing="0">
-        <tr>
+        <!-- <tr>
           <th>Done</th>
           <th>Task</th>
           <th>Delete</th>
-        </tr>
+        </tr> -->
 
         <?php
         while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -67,7 +75,7 @@ $result = mysqli_query($conn, $sql);
   <?php }
   ?>
 
-
+  <a href="logout.php">Logout</a>
   <script src="scripts.js"></script>
 </body>
 
