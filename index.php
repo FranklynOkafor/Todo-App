@@ -13,6 +13,10 @@ if (!$_SESSION['user_id']) {
 $user_id = $_SESSION['user_id'];
 $sql = "SELECT * FROM tasks WHERE user_id = $user_id ORDER BY id DESC";
 $result = mysqli_query($conn, $sql);
+
+$sql2 = "SELECT * FROM users WHERE id = '$user_id'";
+$result2 = mysqli_query($conn, $sql2);
+$row2 = mysqli_fetch_assoc($result2)
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +30,7 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
-  <h1>My tasks</h1>
+  <h1>Hello <?= $row2['username']?></h1>
   <!-- <button>Add new task</button> -->
 
 
